@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+		
+	<script>
+
+		(function () {
+				var x = 5;
+				(function () {
+						/* 
+						be aware - if we add x = 7 here it g(h) still want reginze x=7, since x does not use x var.
+						if we will add some kind of use with x - the g function will regconize it
+						*/
+						function f(y) {return (x + y) - 2};
+						(function () {
+								function g(h) {var x = 7; return h(x)};
+								(function () {
+										var x = 10; z = g(f);
+										
+										/*
+										// added code for debugging
+										document.write("Value is: " + z); 
+										*/
+								})();
+						})();
+				})();
+		})();
+
+	</script>
+
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<script>
+			var x = 5;
+			
+			/* 
+			// check Code
+			z = g(f);
+			document.write("Value is: " + z);  // this line would print 10 
+			*/
+
+			function f(y) { return (x + y) - 2 };
+			function g(h) { var x = 7; return h(x) };
+				
+			{  
+				var x = 10; 	
+				z = g(f);
+
+				/* 
+				// added code for debugging
+				document.write("Value is: " + z); 
+				*/
+			};
+	</script>
+
+
+</html>
