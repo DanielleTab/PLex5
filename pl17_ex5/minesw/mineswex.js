@@ -56,7 +56,45 @@ function nxt() {
         $(this).addClass("mine");
     } else {
         $(this).text(value);
+
         /* ADD YOUR CODE HERE */
+        if (0 != value)
+        {
+            return;
+        }
+        
+        var handleBoardSizeColRowIndex = function(num)
+                                {
+                                    if (0 > num)
+                                    {
+                                        return 0;
+                                    }
+                                    else if (SZ <= num)
+                                    {
+                                        return SZ-1;
+                                    }
+
+                                    return num;
+                                }
+
+        var indexRow = -1;
+        for( ; indexRow < 2; indexRow = indexRow + 1)
+        {
+            var indexCol = -1;
+            for( ; indexCol < 2; indexCol = indexCol + 1)
+            {
+                var realRowIndex = handleBoardSizeColRowIndex(row + indexRow);
+                var realColIndex = handleBoardSizeColRowIndex(col + indexCol);
+                
+                var curCell = get_cell(realRowIndex, realColIndex);
+                if (true === is_cell_hidden(curCell))
+                {
+                    curCell.fadeIn(nxt);
+                }
+            }            
+        }
+
+
     }
 }
 
