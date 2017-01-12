@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<script>
+			
+		var memoize = (function (f) {
+							var memo = [];
+							var memFun = function memFunImpl (n) {
+											/* 
+											* If the function result already in the memo 
+											* 	do not need to call th function at all.
+											* Otherwise, call the function and save the result to memp
+											*/
+											var memRes = memo[n];
+											if (typeof(memRes) !== "undefined") 
+											{	
+												/* return memo value */
+												return memRes;
+											}
+
+											/* call function and save result */
+											var fRes = f(n);
+											memo[n] = fRes;
+
+											return fRes;
+											};	
+
+							return memFun;
+						});
+
+
+		// runner
+
+		var cool_fibonacci = memoize(function(n) {
+								return (n===0 ||n === 1) ? n : cool_fibonacci(n-1) +
+							cool_fibonacci(n-2);
+							});
+
+		document.write(cool_fibonacci(100) + " wow, this was fast!");
+
+	
+	</script>
+
+
+</html>
