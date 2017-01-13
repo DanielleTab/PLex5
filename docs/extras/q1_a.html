@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<script>
+			function map (f, inarray) {
+			var out = [];
+			for(var i = 0; i < inarray.length; i++) {
+			out.push( f(inarray[i]) )
+			}
+			return out;
+			}
+			function reduce (f, inarray) {
+			if (inarray.length <= 1) return;
+			if (inarray.length == 2) return f(inarray[0], inarray[1]);
+			var r = inarray[0];
+			for(var li = 1 ; li < inarray.length ; li++) {
+			r = f(r, inarray[li]);
+			}
+			return r;
+			}
+			function q1a()
+			{
+				var initialArray=[1,2,3,4,5];
+				return reduce(function(x,y){return x+y;},map(function(x){return x*x;},initialArray));
+			}
+	</script>
+
+
+</html>
