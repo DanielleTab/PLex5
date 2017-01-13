@@ -24,8 +24,8 @@ var memoize = (function (f) {
                             var memFun = function memFunImpl (n) {
                                             /* 
                                             * If the function result already in the memo 
-                                            *   do not need to call th function at all.
-                                            * Otherwise, call the function and save the result to memp
+                                            *   we do not need to call the function f at all.
+                                            * Otherwise, call the function and save the result to memo
                                             */
                                             var memRes = memo[n];
                                             if (typeof(memRes) !== "undefined") 

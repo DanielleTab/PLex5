@@ -66,8 +66,8 @@ function nxt() {
         }
 
         /* this function limit the indexes to the board's size =>
-                row: from 0 to SZ 
-                col: from 0 to SZ 
+                row: from 0 to SZ-1
+                col: from 0 to SZ-1
         */
         var handleBoardSizeColRowIndex = function(num)
                                 {
@@ -84,9 +84,9 @@ function nxt() {
                                 }
 
         /****
-        * This block iterate over the cells around the current (zero) reveal cell (only 1 hop).
+        * This block iterate over the cells around the current (zero value) reveal cell (only 1 hop around).
         *  On each cell which is hidden we call:  cell.fadeIn(nxt);
-        *       => this cause the cell to be shown and to the recursive reveal of zeros to keep going.
+        *       => this cause the cell to be shown and to the recursivly reveal more zeros (if exists).
         ******/
         var indexRow = -1;
         for( ; indexRow < 2; indexRow = indexRow + 1)
@@ -94,7 +94,7 @@ function nxt() {
             var indexCol = -1;
             for( ; indexCol < 2; indexCol = indexCol + 1)
             {
-                /* get correct indexes (we dont want indexes >= SZ or indexes < 0) */
+                /* get correct indexes (we want index < SZ and index >= 0) */
                 var realRowIndex = handleBoardSizeColRowIndex(row + indexRow);
                 var realColIndex = handleBoardSizeColRowIndex(col + indexCol);
                 
